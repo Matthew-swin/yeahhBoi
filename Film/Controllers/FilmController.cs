@@ -23,32 +23,54 @@ namespace Film.Controllers
         public FilmController(IConfiguration iconfig)
         {
             this.configuration = iconfig;
-            this.stringBuilder.DataSource = this.configuration.GetSection("DbConnectionStrings").GetSection("Url").Value;
-            this.stringBuilder.InitialCatalog = this.configuration.GetSection("DbConnectionStrings").GetSection("Database").Value;
-            this.stringBuilder.UserID = this.configuration.GetSection("DbConnectionStrings").GetSection("User").Value;
-            this.stringBuilder.Password = this.configuration.GetSection("DbConnectionStrings").GetSection("Password").Value;
-            this.connectionString = this.stringBuilder.ConnectionString;
+            try{
+                this.stringBuilder.DataSource = "no.database.here.com";
+                this.stringBuilder.InitialCatalog = "ls";
+                this.stringBuilder.UserID = "Wally";
+                this.stringBuilder.Password = "Where";
+                this.connectionString = this.stringBuilder.ConnectionString;
+            }
+            catch (SqlException e) {
+                Console.WriteLine(e.Message);
+            }
+            finally {
+                
+                this.stringBuilder.DataSource = this.configuration.GetSection("DbConnectionStrings").GetSection("Url").Value;
+                this.stringBuilder.InitialCatalog = this.configuration.GetSection("DbConnectionStrings").GetSection("Database").Value;
+                this.stringBuilder.UserID = this.configuration.GetSection("DbConnectionStrings").GetSection("User").Value;
+                this.stringBuilder.Password = this.configuration.GetSection("DbConnectionStrings").GetSection("Password").Value;
+                this.connectionString = this.stringBuilder.ConnectionString;
+            }
+            
         }
 
         [HttpGet("{test}")]
-        public string you(string test){
+        public List<Actor> you(string test){
             string connectionStrang = "Server=tcp:oiyou.database.windows.net,1433;Initial Catalog=last;Persist Security Info=False;User ID=bigbob;Password=Password1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             //yaya
+            List<Actor> weewee = new List<Actor>();
             SqlConnection conn = new SqlConnection(connectionStrang);
             string queryString = $"Select * From Actor";
             SqlCommand cmd = new SqlCommand(queryString, conn);
             conn.Open();
-            try
+            string result = "";
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                using (SqlDataReader reader = cmd.ExecuteReader()){}
+                while (reader.Read())
+                {
+                    result += reader[0] + " | " + reader[1] + reader[2] + "\n";
 
+                    weewee.Add(
+                        new Actor()
+                        {
+                            actorNo = (int)reader[0],
+                            fullName = reader[1].ToString(),
+                            firstName = reader[2].ToString(),
+                            lastName = reader[3].ToString()
+                        });
+                }
             }
-            catch (System.Exception se)
-            {
-                
-                return $"Cannot Update user with id {test}: " + se.Message;
-            }
-            return $" Success! Update customer id {test}: \n {cmd.CommandText}";
+            return weewee;
         }
 
     }
