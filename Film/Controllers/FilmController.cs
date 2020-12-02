@@ -164,7 +164,7 @@ namespace Film.Controllers
             //yaya
             List<Movie> Movies = new List<Movie>();
             SqlConnection conn = new SqlConnection(connectionStrang);
-            string queryString = $"Select * From Movie Where Title like 'The%' or Title like 'the%'";
+            string queryString = $"Select * From Movie";
             SqlCommand cmd = new SqlCommand(queryString, conn);
             conn.Open();
             string result = "";
@@ -184,7 +184,11 @@ namespace Film.Controllers
                         });
                 }
             }
-            int total = Movies.Sum(x => Convert.ToInt32(x));
+            int total = 0;
+            foreach (var movie in Movies)
+            {   
+                total = total + (int)movie.runTime;
+            }
             return total;
         }
 
