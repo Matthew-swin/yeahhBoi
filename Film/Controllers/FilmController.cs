@@ -73,5 +73,122 @@ namespace Film.Controllers
             return weewee;
         }
 
+        [HttpGet("rtask1")]
+        public List<Movie> ReadTask1(){
+            string connectionStrang = "Server=tcp:oiyou.database.windows.net,1433;Initial Catalog=last;Persist Security Info=False;User ID=bigbob;Password=Password1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //yaya
+            List<Movie> Movies = new List<Movie>();
+            SqlConnection conn = new SqlConnection(connectionStrang);
+            string queryString = $"Select * From Movie";
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            conn.Open();
+            string result = "";
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result += reader[0] + " | " + reader[1] + reader[2] + reader[3] + "\n";
+
+                    Movies.Add(
+                        new Movie()
+                        {
+                            movieNo = (int)reader[0],
+                            title = reader[1].ToString(),
+                            relYear = (Int16)reader[2],
+                            runTime = (Int16)reader[3]
+                        });
+                }
+            }
+            return Movies;
+        }
+
+        [HttpGet("rtask2")]
+        public List<Movie> ReadTask2(){
+            string connectionStrang = "Server=tcp:oiyou.database.windows.net,1433;Initial Catalog=last;Persist Security Info=False;User ID=bigbob;Password=Password1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //yaya
+            List<Movie> Movies = new List<Movie>();
+            SqlConnection conn = new SqlConnection(connectionStrang);
+            string queryString = $"Select * From Movie Where Title like 'The%' or Title like 'the%'";
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            conn.Open();
+            string result = "";
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result += reader[0] + " | " + reader[1] + reader[2] + reader[3] + "\n";
+
+                    Movies.Add(
+                        new Movie()
+                        {
+                            movieNo = (int)reader[0],
+                            title = reader[1].ToString(),
+                            relYear = (Int16)reader[2],
+                            runTime = (Int16)reader[3]
+                        });
+                }
+            }
+            return Movies;
+        }
+
+
+        [HttpGet("rtask3")]
+        public List<rt3> ReadTask3(){
+            string connectionStrang = "Server=tcp:oiyou.database.windows.net,1433;Initial Catalog=last;Persist Security Info=False;User ID=bigbob;Password=Password1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //yaya
+            List<rt3> Movies = new List<rt3>();
+            SqlConnection conn = new SqlConnection(connectionStrang);
+            string queryString = $"SELECT TITLE FROM MOVIE M LEFT JOIN CASTING C on C.MOVIENO = M.MOVIENO LEFT JOIN ACTOR A on C.ACTORNO = A.ACTORNO WHERE FULLNAME = 'Luke Wilson'";
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            conn.Open();
+            string result = "";
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result += reader[0] + "\n";
+
+                    Movies.Add(
+                        new rt3()
+                        {
+                            title = reader[0].ToString(),
+                        });
+                }
+            }
+            return Movies;
+        }
+
+        [HttpGet("rtask4")]
+        public int ReadTask4(){
+            string connectionStrang = "Server=tcp:oiyou.database.windows.net,1433;Initial Catalog=last;Persist Security Info=False;User ID=bigbob;Password=Password1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //yaya
+            List<Movie> Movies = new List<Movie>();
+            SqlConnection conn = new SqlConnection(connectionStrang);
+            string queryString = $"Select * From Movie Where Title like 'The%' or Title like 'the%'";
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            conn.Open();
+            string result = "";
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result += reader[0] + " | " + reader[1] + reader[2] + reader[3] + "\n";
+
+                    Movies.Add(
+                        new Movie()
+                        {
+                            movieNo = (int)reader[0],
+                            title = reader[1].ToString(),
+                            relYear = (Int16)reader[2],
+                            runTime = (Int16)reader[3]
+                        });
+                }
+            }
+            int total = Movies.Sum(x => Convert.ToInt32(x));
+            return total;
+        }
+
+
+
     }
 }

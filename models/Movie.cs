@@ -7,8 +7,8 @@ namespace models
     {
         public int movieNo { get; set; }
         public string title { get; set; }
-        public int relYear { get; set; }
-        public int runTime { get; set; }
+        public Int16 relYear { get; set; }
+        public Int16 runTime { get; set; }
         
         //use dis in controller
         public DateTime currentDateTime = DateTime.Now;
