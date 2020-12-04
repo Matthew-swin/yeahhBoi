@@ -1310,6 +1310,9 @@
         }
       },
       "models/1.0.0": {
+        "dependencies": {
+          "Microsoft.SqlServer.SqlManagementObjects": "161.44091.28"
+        },
         "runtime": {
           "models.dll": {}
         },

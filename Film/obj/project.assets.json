@@ -1335,6 +1335,9 @@
       "models/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.SqlServer.SqlManagementObjects": "161.44091.28"
+        },
         "compile": {
           "bin/placeholder/models.dll": {}
         },

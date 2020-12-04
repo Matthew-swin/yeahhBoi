@@ -6,12 +6,13 @@ namespace models
     public class Actor
     {
         public int actorNo { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
         public string fullName { get; set; }
+        public string givenName { get; set; }
+        public string surname { get; set; }
+        
 
         public void setFullName() {
-            this.fullName = firstName + " " + lastName;
+            this.fullName = givenName + " " + surname;
         }
     }
 }
