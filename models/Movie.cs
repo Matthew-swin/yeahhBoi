@@ -73,7 +73,8 @@ namespace models
                     this.methodBitch = (int)reader[0];         
                 }
             }
-
+            if (methodBitch == 0)
+            throw new Exception("The Movie Title you have entered is incorrect");
             return methodBitch;
         }
 
@@ -95,6 +96,9 @@ namespace models
                 }
             }
             int poop;
+            if (relYear == 0)
+            throw new Exception("The Movie Title you have entered is incorrect");
+            
             return poop = curr - (int)this.relYear;
         }
     }
