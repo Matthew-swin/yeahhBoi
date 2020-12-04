@@ -11,7 +11,7 @@ namespace models
         public string title { get; set; }
         public Int16 relYear { get; set; }
         public Int16 runTime { get; set; }
-        //
+        //need for numActors method
         public int methodBitch;
         // SQL interfaces and objects
         IConfiguration configuration;
@@ -39,21 +39,30 @@ namespace models
             finally
             {
 
-                this.stringBuilder.DataSource = this.configuration.GetSection("DbConnectionStrings").GetSection("Url").Value;
-                this.stringBuilder.InitialCatalog = this.configuration.GetSection("DbConnectionStrings").GetSection("Database").Value;
-                this.stringBuilder.UserID = this.configuration.GetSection("DbConnectionStrings").GetSection("User").Value;
-                this.stringBuilder.Password = this.configuration.GetSection("DbConnectionStrings").GetSection("Password").Value;
+                this.stringBuilder.DataSource = "oiyou.database.windows.net";
+                this.stringBuilder.InitialCatalog = "last";
+                this.stringBuilder.UserID = "bigbob";
+                this.stringBuilder.Password = "Password1234";
                 this.connectionString = this.stringBuilder.ConnectionString;
             }
 
         }
+        public void setConnectionString(){
+            this.stringBuilder.DataSource = "oiyou.database.windows.net";
+                this.stringBuilder.InitialCatalog = "last";
+                this.stringBuilder.UserID = "bigbob";
+                this.stringBuilder.Password = "Password1234";
+                this.connectionString = this.stringBuilder.ConnectionString;
+        }
         //end of SQL stuff
 
         //methods to test
-        public int NumActor()
+        //adding parameter title for numactors to make it easier for testing
+        public int NumActor(string title)
         {
+            this.title = title;
             SqlConnection conn = new SqlConnection(connectionString);
-            string queryString = $"Select count(ACTORNO) FROM CASTING C LEFT JOIN MOVIE M ON M.MOVIENO = C.MOVIENO WHERE M.TITLE = {this.title}";
+            string queryString = $"Select count(ACTORNO) FROM CASTING C LEFT JOIN MOVIE M ON M.MOVIENO = C.MOVIENO WHERE M.TITLE = '{this.title}'";
             SqlCommand cmd = new SqlCommand(queryString, conn);
             conn.Open();
 
@@ -68,14 +77,13 @@ namespace models
             return methodBitch;
         }
 
-        public int GetAge()
+        public int GetAge(string title)
         {
-            DateTime currentDateTime = DateTime.Now;
-            currentDateTime.ToString("yyyy");
-            int currdate = Convert.ToInt32(currentDateTime);
-
+            this.title = title;
+            DateTime currentDateTime = DateTime.Today;
+            int curr = Convert.ToInt32(currentDateTime.Year);      
             SqlConnection conn = new SqlConnection(connectionString);
-            string queryString = $"Select Relyear From Movie where Title = {this.title}";
+            string queryString = $"Select Relyear From Movie where Title = '{this.title}'";
             SqlCommand cmd = new SqlCommand(queryString, conn);
             conn.Open();
 
@@ -87,7 +95,7 @@ namespace models
                 }
             }
             int poop;
-            return poop = currdate - (int)this.relYear;
+            return poop = curr - (int)this.relYear;
         }
     }
 }
