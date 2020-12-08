@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "ycstqEPyE5TjVTBtJrpadL2MuYqJKkbyDc/CcWNoIXX3lKSYATIS0ccjCWIQ+6tEZI4Om7ja1W4KUv0k3x+xlA==",
+  "dgSpecHash": "EYM7+SONC+B0k5vgE7u3Z9AIfyHDPsNd+7WJwxEgKRQZW45wzMRRa9LoyH2eAY/k02GSvJIQSLZbPjfoZe4/eQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\matth\\Desktop\\code\\C#\\aaa\\Film\\Film.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matth\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.0\\microsoft.data.sqlclient.2.0.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.0\\microsoft.data.sqlclient.sni.runtime.2.0.0.nupkg.sha512",
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\microsoft.identity.client\\4.14.0\\microsoft.identity.client.4.14.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\5.6.0\\microsoft.identitymodel.jsonwebtokens.5.6.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\microsoft.identitymodel.logging\\5.6.0\\microsoft.identitymodel.logging.5.6.0.nupkg.sha512",

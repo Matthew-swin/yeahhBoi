@@ -10,7 +10,6 @@ namespace test
         public void testExceptionMatt(){
             Movie poop = new Movie();
             poop.setConnectionString();
-            
             Assert.Throws<Exception>(() => poop.NumActor("Matt Damon"));
         }
         
@@ -39,7 +38,6 @@ namespace test
         public void testException(){
             Movie poop = new Movie();
             poop.setConnectionString();
-            
             Assert.Throws<Exception>(() => poop.GetAge("Matt Damon"));
         }
     }

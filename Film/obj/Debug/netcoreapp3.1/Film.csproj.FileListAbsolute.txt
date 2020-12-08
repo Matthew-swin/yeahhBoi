@@ -78,3 +78,5 @@ C:\Users\matth\Desktop\code\C#\aaa\Film\bin\Debug\netcoreapp3.1\runtimes\win\lib
 C:\Users\matth\Desktop\code\C#\aaa\Film\bin\Debug\netcoreapp3.1\models.dll
 C:\Users\matth\Desktop\code\C#\aaa\Film\bin\Debug\netcoreapp3.1\models.pdb
 C:\Users\matth\Desktop\code\C#\aaa\Film\obj\Debug\netcoreapp3.1\Film.csproj.CopyComplete
+C:\Users\matth\Desktop\code\C#\aaa\Film\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\matth\Desktop\code\C#\aaa\Film\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
